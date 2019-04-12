@@ -18,14 +18,14 @@ sudo find . -iname 'MongoRecords.js' -exec cp -t /var/lib/partsunlimited {} +;
 sudo mongo ordering /var/lib/partsunlimited/MongoRecords.js
 
 # Change Tomcat listening port from 8080 to 9080
-sudo sed -i s/8080/9080/g /etc/tomcat7/server.xml
+sudo sed -i s/8080/9080/g /etc/tomcat8/server.xml
 
 # Remove existing MRP directory and copy WAR file to Tomcat directory for auto-deployment
-sudo rm -rf /var/lib/tomcat7/webapps/mrp
-sudo cp /var/lib/partsunlimited/mrp.war /var/lib/tomcat7/webapps
+sudo rm -rf /var/lib/tomcat8/webapps/mrp
+sudo cp /var/lib/partsunlimited/mrp.war /var/lib/tomcat8/webapps
 
 # Restart Tomcat
-sudo /etc/init.d/tomcat7 restart
+sudo /etc/init.d/tomcat8 restart
 
 # Run Ordering Service app
 sudo java -jar /var/lib/partsunlimited/ordering-service-0.1.0.jar &>/dev/null &
